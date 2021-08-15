@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+       <head>
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <style type="text/css">
+              body{
+                     margin: 0;
+                     min-width: 250px;
+              }
+              *{
+                     box-sizing: border-box;
+              }
+              ul{
+                     margin: 0;
+                     padding: 0;
+              }
+              ul li{
+                     cursor: pointer;
+                     position: relative;
+                     padding: 12px 8px 12px 40px;
+                     list-style-type: none;
+                     background: coral;
+                     font-size: 20px;
+              }
+              ul li:hover{
+                     background: cornsilk;
+              }
+              .delete{
+                     position: absolute;
+                     right: 0;
+                     top: 0;
+                     padding: 12px 16px 12px 16px ;
+              }
+              .delete:hover{
+                     background: crimson;
+              
+              }
+              .header{
+                     background: darkgoldenrod;
+                     padding: 30px 40px;
+                     color: darkgray;
+                     text-align: center;
+              }
+              .header::after{
+                     content: "";
+                     display: table;
+                     clear: both;
+              }
+              input{
+                     margin: 0;
+                     border: none;
+                     border-radius: 0;
+                     width: 75%;
+                     padding: 10px;
+                     float: left;
+                     font-size: 20px;
+              }
+              .addBtn{
+                     padding: 10px;
+                     width: 25%;
+                     background:blue;
+                     float: left;
+                     text-align: center;
+                     font-size: 20px;
+                     cursor: pointer;
+                     border-radius: 0;
+
+              }
+              .addBtn:hover{
+                     background: cornsilk;
+              }
+              </style>
+              <title>Todo List</title>
+       </head>
+       <body>
+              <div id="fdiv" class="header">
+                     <h1>To do List</h1>
+                     <input type="text" id="myname" placeholder="write your text">
+                     <span onclick="addNew()" class="addBtn">Add</span>
+              </div>
+              <ul id="ful">
+                     <li>Vivek </li>
+                     <li>Shubham </li>
+              </ul>
+
+              <script>
+                  // Adding a delete button and adding to each list items
+
+                     var dbtn = document.getElementsByTagName("li");
+                     var i;
+                     for(i=0;i<dbtn.length;i++){
+                            var s=document.createElement("span");
+                            var txt=document.createTextNode("Delete");
+                            s.className="delete";
+                            s.appendChild(txt);
+                            dbtn[i].appendChild(s);
+                     }
+
+                     // click the delete button to hide the current items
+
+                     var close=document.getElementsByClassName("delete");
+                     for(var i=0;i<close.length;i++){
+                            close[i].onclick=function(){
+                                   var currentEle=this.parentElement;
+                                   currentEle.style.display="none";
+                            }
+                     }
+
+                     // creating a new list item when we click on Add
+
+                     function addNew(){
+                            var li=document.createElement("li");
+                            var inputValue=document.getElementById("myname").value;
+                            var t=document.createTextNode(inputValue);
+                            li.appendChild(t);
+                            if(inputValue==''){
+                                   alert("Please write somethings");
+                            }
+                            else{
+                                   document.getElementById("ful").appendChild(li);
+                            }
+                            document.getElementById("myname").value=" ";
+
+                            var s=document.createElement("SPAN");
+                            var txt=document.createTextNode("Delete");
+                            s.className="delete";
+                            s.appendChild(txt);
+                            li.appendChild(s);
+
+
+                            for(var i=0;i<close.length;i++){
+                            close[i].onclick=function(){
+                                   var currentEle=this.parentElement;
+                                   currentEle.style.display="none";
+                            }
+                     }
+
+                     }
+
+              </script>
+
+       </body>
+</html>
